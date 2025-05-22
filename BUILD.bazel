@@ -1,0 +1,18 @@
+# Root BUILD file for the simplewal project.
+# This file can be used for global aliases or configurations if needed.
+
+# Example of defining a test suite for all tests in the project:
+test_suite(
+    name = "all_tests",
+    tests = [
+        "//internal/wal:wal_test",
+        # Add other test targets here as your project grows
+        # e.g., "//pkg/api:api_test",
+    ],
+)
+
+# You can also create an alias for the main client binary
+alias(
+    name = "simplewal", # Allows `bazel run //:simplewal`
+    actual = "//cmd/simplewal:simplewal_client",
+)

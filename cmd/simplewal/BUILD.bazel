@@ -1,0 +1,19 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "simplewal_main_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/muhammadmontasir/simplewal/cmd/simplewal",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//internal/wal:wal_lib",
+        "//proto:wal_go_proto",
+        "@org_golang_google_protobuf//proto",
+    ],
+)
+
+go_binary(
+    name = "simplewal_client",
+    embed = [":simplewal_main_lib"],
+    visibility = ["//visibility:public"],
+)

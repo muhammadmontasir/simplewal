@@ -1,0 +1,19 @@
+# Bazel
+/bazel-*
+*.bzl~
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+/vendor/
+/go.sum # Often committed, but can be gitignored if strictly Bazel-managed
+
+# IDE / OS specific
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
