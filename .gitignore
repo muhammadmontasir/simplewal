@@ -17,3 +17,19 @@
 *.swp
 *~
 .DS_Store
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Go workspace file
+go.work
+go.work.sum
+
+# env file
+.env
+
+# Ignore Bazel build output directories and symlinks
+MODULE.bazel.lock

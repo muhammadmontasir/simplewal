@@ -1,31 +1,39 @@
 module(
     name = "simplewal",
-    version = "0.1.0"
+    version = "0.1.0",
 )
 
 bazel_dep(
     name = "bazel_skylib",
-    version = "1.2.0"
+    version = "1.7.1",
 )
-
+bazel_dep(
+    name = "gazelle",
+    version = "0.43.0",
+)
 bazel_dep(
     name = "rules_go",
-    version = "0.54.0"
+    version = "0.54.0",
 )
-
 bazel_dep(
     name = "rules_proto",
-    version = "7.1.0"
+    version = "7.1.0",
 )
-
 bazel_dep(
     name = "protobuf",
-    version = "31.0-rc2"
+    version = "31.0-rc2",
 )
 
 go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk")
 go_sdk.download(version = "1.24.2")
 
-go_deps = use_extension("@rules_go//go:extensions.bzl", "go_deps") #  helps manage Go dependencies in Bazel projects.
-go_deps.from_file(go_mod = "//:go.mod") # Tells Bazel to read Go dependencies from your project's go.mod file. Keeps Bazel's dependency graph in sync with your Go module.
-use_repo(go_deps, "org_golang_google_protobuf") #Makes the org_golang_google_protobuf dependency (used for Protocol Buffers in Go) available in your Bazel workspace.
+go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps")
+go_deps.from_file(go_mod = "//:go.mod")
+use_repo(go_deps, "org_golang_google_protobuf")
+
+# go_dependencies = use_extension("@gazelle//:extensions.bzl", "go_dependencies")  #  helps manage Go dependencies in Bazel projects.
+# go_dependencies.from_file(go_mod = "//:go.mod")  # Tells Bazel to read Go dependencies from your project's go.mod file. Keeps Bazel's dependency graph in sync with your Go module.
+# use_repo(
+#     go_dependencies,
+#     "org_golang_google_protobuf",
+# )

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	pb "github.com/muhammadmontasir/simplewal/proto"
+	pb "github.com/muhammadmontasir/simplewal/proto"  // This matches the importpath in proto/BUILD.bazel
 )
 
 // NewLogEntry creates a new log entry protobuf message
